@@ -116,18 +116,16 @@ class Player {
               audioData.channelData[i] = renderedBuffer.getChannelData(i);
             }
             // create wav file.
-            return WavEncoder
-              .encode(audioData)
-              .then((buffer: ArrayBuffer) => {
-                return new Promise((inResolve, inReject) => {
-                  fs.writeFile(wavFilePath, Buffer.from(buffer), 'binary', (err: Error) => {
-                    if (err) {
-                      return inReject(err);
-                    }
-                    return inResolve(true);
-                  });
+            return WavEncoder.encode(audioData).then((buffer: ArrayBuffer) => {
+              return new Promise((inResolve, inReject) => {
+                fs.writeFile(wavFilePath, Buffer.from(buffer), 'binary', (err: Error) => {
+                  if (err) {
+                    return inReject(err);
+                  }
+                  return inResolve(true);
                 });
               });
+            });
           }); // offlineCtx.startRendering
         })
         .catch((err: Error) => {

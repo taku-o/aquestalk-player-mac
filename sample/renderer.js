@@ -2,14 +2,14 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const player_1 = require("../player");
 var talkOptions = {
-    frameworkPath: './vendorEva/AquesTalk2Eva.framework/Versions/A/AquesTalk2Eva',
-    phontPath: './vendorEva/phont/aq_f1c.phont',
+    frameworkPath: '../vendorEva/AquesTalk2Eva.framework/Versions/A/AquesTalk2Eva',
+    phontPath: '../vendorEva/phont/aq_f1c.phont',
     speed: 100,
     volume: 100,
 };
 var kanjiOptions = {
-    frameworkPath: './vendorEva/AqKanji2Koe.framework/Versions/A/AqKanji2Koe',
-    aqDictPath: './vendorEva/aq_dic_large',
+    frameworkPath: '../vendorEva/AqKanji2Koe.framework/Versions/A/AqKanji2Koe',
+    aqDictPath: '../vendorEva/aq_dic_large',
     devKey: null,
 };
 var player = new player_1.AquesTalk2Player(talkOptions, kanjiOptions);

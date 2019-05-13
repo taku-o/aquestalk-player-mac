@@ -1,0 +1,14 @@
+{
+  "name": "aquestalk-player-mac-sample",
+  "version": "0.1.0",
+  "description": "AquesTalk javascript audio play, and record library Sample for Mac.",
+  "main": "./main.js",
+  "types": "types.d.ts",
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "4.2.0"
+  }
+}

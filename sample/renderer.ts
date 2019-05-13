@@ -5,14 +5,14 @@
 import {AquesTalk2Player} from '../player';
 
 var talkOptions = {
-  frameworkPath: './vendorEva/AquesTalk2Eva.framework/Versions/A/AquesTalk2Eva',
-  phontPath: './vendorEva/phont/aq_f1c.phont',
+  frameworkPath: '../vendorEva/AquesTalk2Eva.framework/Versions/A/AquesTalk2Eva',
+  phontPath: '../vendorEva/phont/aq_f1c.phont',
   speed: 100,
   volume: 100,
 };
 var kanjiOptions = {
-  frameworkPath: './vendorEva/AqKanji2Koe.framework/Versions/A/AqKanji2Koe',
-  aqDictPath: './vendorEva/aq_dic_large',
+  frameworkPath: '../vendorEva/AqKanji2Koe.framework/Versions/A/AqKanji2Koe',
+  aqDictPath: '../vendorEva/aq_dic_large',
   devKey: null,
 };
 
@@ -23,11 +23,18 @@ var btnPlay = document.getElementById('play');
 var btnRecord = document.getElementById('record');
 var fPath: any = document.getElementById('path');
 
-btnPlay.addEventListener('click', () => {
-  player.play(fWords.value);
-}, false);
+btnPlay.addEventListener(
+  'click',
+  () => {
+    player.play(fWords.value);
+  },
+  false,
+);
 
-btnRecord.addEventListener('click', () => {
-  player.record(fWords.value, fPath.value);
-}, false);
-
+btnRecord.addEventListener(
+  'click',
+  () => {
+    player.record(fWords.value, fPath.value);
+  },
+  false,
+);

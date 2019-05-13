@@ -1,15 +1,14 @@
 {
   "name": "aquestalk-player-mac",
   "version": "0.1.0",
-  "description": "AquesTalk javascript audio player library for Mac.",
-  "main": "./sample/main.js",
+  "description": "AquesTalk javascript audio play, and record library for Mac.",
+  "main": "./player.js",
   "types": "types.d.ts",
   "scripts": {
     "tsc": "gulp tsc",
     "lint": "gulp lint",
     "formt": "gulp format",
-    "test": "gulp test",
-    "sample": "electron ."
+    "test": "gulp test"
   },
   "files": [
     ".python-version",
@@ -19,7 +18,10 @@
     "player.js",
     "lib/aquestalk10.js",
     "lib/aquestalk2.js",
-    "lib/player.js"
+    "lib/player.js",
+    "sample/index.html",
+    "sample/main.js",
+    "sample/renderer.js"
   ],
   "repository": {
     "type": "git",
