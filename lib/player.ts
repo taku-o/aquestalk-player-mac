@@ -116,7 +116,7 @@ class Player {
               audioData.channelData[i] = renderedBuffer.getChannelData(i);
             }
             // create wav file.
-            return WavEncoder()
+            return WavEncoder
               .encode(audioData)
               .then((buffer: ArrayBuffer) => {
                 return new Promise((inResolve, inReject) => {
