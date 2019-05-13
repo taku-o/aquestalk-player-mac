@@ -13,13 +13,14 @@ class Player {
     return aBuffer;
   }
 
-  play(bufWav: Buffer): Promise<boolean> {
+  play(bufWav: Buffer, volume: number): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const aBuffer = this.toArrayBuffer(bufWav);
 
       // @ts-ignore
       const audioCtx = new window.AudioContext();
       let sourceNode: AudioBufferSourceNode = null;
+      let gainNode: GainNode = null;
       let audioPlayNode: AudioBufferSourceNode = null;
       return audioCtx
         .decodeAudioData(aBuffer)
@@ -30,9 +31,13 @@ class Player {
           // source
           sourceNode = offlineCtx.createBufferSource();
           sourceNode.buffer = decodedData;
+          // gain
+          gainNode = offlineCtx.createGain();
+          gainNode.gain.value = volume;
 
           // connect
-          sourceNode.connect(offlineCtx.destination);
+          sourceNode.connect(gainNode);
+          gainNode.connect(offlineCtx.destination);
 
           // and start
           sourceNode.start(0);
@@ -60,6 +65,9 @@ class Player {
             sourceNode.buffer = null;
             sourceNode.disconnect();
           }
+          if (gainNode) {
+            gainNode.disconnect();
+          }
           if (audioPlayNode) {
             audioPlayNode.buffer = null;
             audioPlayNode.disconnect();
@@ -69,13 +77,14 @@ class Player {
     });
   }
 
-  record(wavFilePath: string, bufWav: Buffer): Promise<boolean> {
+  record(wavFilePath: string, bufWav: Buffer, volume: number): Promise<boolean> {
     return new Promise((resolve, reject) => {
       const aBuffer = this.toArrayBuffer(bufWav);
 
       // @ts-ignore
       const audioCtx = new window.AudioContext();
       let sourceNode: AudioBufferSourceNode = null;
+      let gainNode: GainNode = null;
       return audioCtx
         .decodeAudioData(aBuffer)
         .then((decodedData: AudioBuffer) => {
@@ -85,9 +94,13 @@ class Player {
           // source
           sourceNode = offlineCtx.createBufferSource();
           sourceNode.buffer = decodedData;
+          // gain
+          gainNode = offlineCtx.createGain();
+          gainNode.gain.value = volume;
 
           // connect
-          sourceNode.connect(offlineCtx.destination);
+          sourceNode.connect(gainNode);
+          gainNode.connect(offlineCtx.destination);
 
           // and start
           sourceNode.start(0);
@@ -125,6 +138,9 @@ class Player {
           if (sourceNode) {
             sourceNode.buffer = null;
             sourceNode.disconnect();
+          }
+          if (gainNode) {
+            gainNode.disconnect();
           }
           audioCtx.close();
         });

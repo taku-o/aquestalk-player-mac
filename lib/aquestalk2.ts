@@ -18,14 +18,14 @@ class AquesTalk2Player {
   play(message: string): Promise<boolean> {
     const encoded = this.aqKanji2Koe.convert(message);
     return this.aquesTalk2.wave(encoded, this.talkOptions.phontPath, this.talkOptions.speed).then((bufWav) => {
-      return this.player.play(bufWav);
+      return this.player.play(bufWav, this.talkOptions.volume);
     });
   }
 
   record(message: string, wavFilePath: string): Promise<boolean> {
     const encoded = this.aqKanji2Koe.convert(message);
     return this.aquesTalk2.wave(encoded, this.talkOptions.phontPath, this.talkOptions.speed).then((bufWav) => {
-      return this.player.record(wavFilePath, bufWav);
+      return this.player.record(wavFilePath, bufWav, this.talkOptions.volume);
     });
   }
 }

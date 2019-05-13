@@ -21,6 +21,7 @@ declare namespace aquestalk {
     frameworkPath: string;
     phontPath: string;
     speed: number;
+    volume: number;
   }
   export interface AquesTalk10Options {
     frameworkPath: string;
