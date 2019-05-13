@@ -10,6 +10,16 @@
     "formt": "gulp format",
     "test": "gulp test"
   },
+  "files": [
+    ".python-version",
+    "README.md",
+    "package-lock.json",
+    "package.json",
+    "player.js",
+    "lib/aquestalk10.js",
+    "lib/aquestalk2.js",
+    "lib/player.js"
+  ],
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/taku-o/aquestalk-player-mac.git"
