@@ -27,10 +27,11 @@ npm install
 ```
 
 ### run
-* Elelectronアプリを起動します。
+* Elelectronのサンプルアプリを起動します。
 
 ```sh
 cd sample
+npm install
 npm run start
 ```
 
